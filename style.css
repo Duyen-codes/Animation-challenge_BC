@@ -1,0 +1,181 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 2rem;
+  overflow: scroll;
+}
+
+/* Make a circle which gets bigger and change color while you hover */
+.first-task {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: orange;
+  transition: all 0.5s;
+}
+
+.first-task:hover {
+  transform: scale(1.5);
+  background-color: orchid;
+}
+
+/* Make a rectangle which rotates 180deg and change color while you hover */
+.second-task {
+  width: 100px;
+  height: 100px;
+  background: orchid;
+  transition: all 1s;
+}
+
+.second-task:hover {
+  transform: rotate(180deg);
+  background: palegreen;
+}
+
+/* Make a rectangle change smaller and text appearing when you hover it! */
+.third-task {
+  width: 100px;
+  height: 100px;
+  background: greenyellow;
+  transition: all 0.5s;
+}
+
+p {
+  visibility: hidden;
+}
+
+.third-task:hover {
+  transform: scale(0.5);
+}
+
+.third-task:hover p {
+  visibility: visible;
+}
+
+/* Make borders which appearing smoothly by hovering */
+.fifth-task {
+  width: 250px;
+  height: 250px;
+  background: orange;
+  position: relative; /* required for setting absolute position on pseudo-elements */
+}
+
+.fifth-task::before,
+.fifth-task::after {
+  content: "";
+  position: absolute;
+  border: 5px solid transparent;
+  width: 0;
+  height: 0;
+}
+
+.fifth-task::before {
+  top: 0;
+  left: 0;
+}
+.fifth-task::after {
+  bottom: 0;
+  right: 0;
+}
+
+.fifth-task:hover::before,
+.fifth-task:hover::after {
+  width: 100%;
+  height: 100%;
+}
+
+.fifth-task:hover::before {
+  border-top-color: cyan;
+  border-left-color: cyan;
+  transition: width 0.5s ease-out, height 0.5s ease-out;
+}
+
+.fifth-task:hover::after {
+  border-right-color: greenyellow;
+  border-bottom-color: greenyellow;
+  transition: width 0.5s ease-out, height 0.5s ease-out;
+}
+
+/* Make an animation, where the circle turns to a rectangle and back to the circle and change colour. Make this object move to the left to right,
+top to bottom, and back right to left and bottom to top. Make animation to pause when hovering object. */
+
+.animated-circle {
+  background: mediumvioletred;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: relative;
+  animation: rectangle-color-change 2s linear infinite alternate,
+    moveAnimate 5s linear infinite alternate;
+}
+
+@keyframes rectangle-color-change {
+  0% {
+    border-radius: 50%;
+  }
+  25% {
+    border-radius: 0;
+    width: 250px;
+    height: 150px;
+  }
+
+  80%,
+  100% {
+    background-color: plum;
+  }
+}
+
+@keyframes moveAnimate {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  50% {
+    left: 200px;
+    top: 0;
+  }
+  60% {
+    left: 200px;
+    top: 200px;
+  }
+  80% {
+    left: 0;
+    top: 200px;
+  }
+  100% {
+    left: 0;
+    top: 0;
+  }
+}
+.animated-circle:hover {
+  animation-play-state: paused;
+}
+
+/* Alive background */
+body {
+  background: linear-gradient(-45deg, brown, cyan);
+  background-size: 300% 300%;
+  animation: gradient 15s linear infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
