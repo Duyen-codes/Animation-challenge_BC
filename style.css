@@ -15,6 +15,58 @@ body {
   overflow: scroll;
 }
 
+.toggle-bg-btn {
+  width: 150px;
+  height: 56px;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  background-color: #fff;
+  border: 2px solid #fff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden; /* off-btn stays hidden on left 100% */
+}
+
+.on-btn,
+.middle-btn,
+.off-btn {
+  position: absolute;
+  height: 100%;
+  color: #fff;
+  transition: all 0.5s ease;
+  padding: 10px;
+}
+
+.on-btn {
+  left: 0;
+  width: 100%;
+  background: green;
+}
+
+.middle-btn {
+  height: 80%;
+  width: 60px; /* parent has width 150px */
+  border-radius: 1rem;
+  background: #fff;
+  right: 5px;
+  z-index: 1; /* white middle btn stays on top of on- and off-btn */
+}
+
+.off-btn {
+  width: 100%;
+  background: grey;
+  left: 100%; /* stay out on the right side of toggle-bg-btn */
+  text-align: right; /* off text stays on the left and hidden otherwise */
+}
+
+.middle-btn.move {
+  transform: translateX(-75px);
+}
+
+.off-btn.push {
+  left: 0;
+}
 /* Make a circle which gets bigger and change color while you hover */
 .first-task {
   width: 100px;
